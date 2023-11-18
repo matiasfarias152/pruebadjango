@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Listado de Préstamos</h1>
+  <ul>
+    {% for prestamo in object_list %}
+      <li>{{ prestamo.id }} - {{ prestamo.libro.titulo }} - {{ prestamo.cliente.nombre }} - {{ prestamo.estado_devolucion }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'prestamo_create' %}">Agregar préstamo</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Detalle del Libro</h1>
+  <p><strong>Título:</strong> {{ libro.titulo }}</p>
+  <p><strong>Autor:</strong> {{ libro.autor }}</p>
+  <p><strong>Fecha:</strong> {{ libro.fecha }}</p>
+  <p><strong>Cantidad Total:</strong> {{ libro.cantidad_total }}</p>
+  <p><strong>Género:</strong> {{ libro.genero }}</p>
+  <p><strong>Disponibilidad:</strong> {{ libro.disponibilidad }}</p>
+
+  <a href="{% url 'modificar_libro' libro.id %}">Editar</a>
+  <a href="{% url 'eliminar_libro' libro.id %}">Eliminar</a>
+  <a href="{% url 'listar_libros' %}">Volver al listado</a>
+{% endblock %}

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de Clientes</title>
-</head>
-<body>
+{% extends 'base_generic.html' %}
+
+{% block content %}
     <h1>Listado de Clientes</h1>
 
     <ul>
@@ -18,5 +14,4 @@
     </ul>
 
     <a href="{% url 'agregar_cliente' %}">Agregar Cliente</a>
-</body>
-</html>
+{% endblock %}

@@ -11,3 +11,5 @@ class Cliente(models.Model):
 
 # Create your models here.
 
+    def __str__(self):
+        return self.nombre

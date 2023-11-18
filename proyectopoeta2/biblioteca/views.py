@@ -1,26 +1,40 @@
-
-from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Libro
-from django.urls import reverse_lazy
+from .forms import LibroForm
 
-class LibroListView(ListView):
-    model = Libro
-    template_name = 'biblioteca/libro_list.html'
+def listar_libros(request):
+    libros = Libro.objects.all()
+    return render(request, 'biblioteca/libro_list.html', {'libros': libros})
 
-class LibroCreateView(CreateView):
-    model = Libro
-    template_name = 'biblioteca/libro_form.html'
-    fields = ['titulo', 'autor', 'fecha', 'cantidad_total', 'genero']
-    success_url = reverse_lazy('libro_list')
+def agregar_libro(request):
+    if request.method == 'POST':
+        form = LibroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_libros')
+    
+    else:
+        form = LibroForm()
+    return render(request, 'biblioteca/libro_create.html', {'form': form})
 
-class LibroUpdateView(UpdateView):
-    model = Libro
-    template_name = 'biblioteca/libro_form.html'
-    fields = ['titulo', 'autor', 'fecha', 'cantidad_total', 'genero']
-    success_url = reverse_lazy('libro_list')
+def detalle_libro(request, libro_id):
+    libro = get_object_or_404(Libro, pk=libro_id)
+    return render(request, 'biblioteca/libro_detail.html', {'libro': libro})
 
-class LibroDeleteView(DeleteView):
-    model = Libro
-    template_name = 'biblioteca/libro_confirm_delete.html'
-    success_url = reverse_lazy('libro_list')
+def modificar_libro(request, libro_id):
+    libro = get_object_or_404(Libro, pk=libro_id)
+    if request.method == "POST":
+        form = LibroForm(request.POST, instance=libro)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_libros')
+    
+    else:
+        form = LibroForm(instance=libro)
+    
+    return render(request, 'biblioteca/libro_edit.html', {'form': form, 'libro': libro})
+
+def eliminar_libro(request, libro_id):
+    libro = get_object_or_404(Libro, pk=libro_id)
+    libro.delete()
+    return redirect('listar_libros')
