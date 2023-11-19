@@ -16,3 +16,15 @@ class Prestamo(models.Model):
 
     def __str__(self):
         return f'{self.id} - {self.libro.titulo} - {self.cliente.nombre}'
+
+    def estado_devolucion_str(self):
+        return "Devuelto" if self.estado_devolucion else "No devuelto"
+    
+
+
+
+
+
+
+
+   

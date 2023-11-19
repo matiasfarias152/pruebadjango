@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import PrestamoListView, PrestamoCreateView, PrestamoUpdateView, PrestamoDeleteView
+from . import views
 
 urlpatterns = [
-    path('prestamos/', PrestamoListView.as_view(), name='prestamo_list'),
-    path('prestamos/nuevo/', PrestamoCreateView.as_view(), name='prestamo_create'),
-    path('prestamos/editar/<int:pk>/', PrestamoUpdateView.as_view(), name='prestamo_edit'),
-    path('prestamos/eliminar/<int:pk>/', PrestamoDeleteView.as_view(), name='prestamo_delete'),
+    path('prestamos/', views.listar_prestamos, name='listar_prestamos'),
+    path('prestamos/agregar/', views.agregar_prestamo, name='agregar_prestamo'),
+    path('prestamos/<int:prestamo_id>/', views.detalle_prestamo, name='detalle_prestamo'),
+    path('prestamos/<int:prestamo_id>/editar/', views.modificar_prestamo, name='modificar_prestamo'),
+    path('prestamos/<int:prestamo_id>/eliminar/', views.eliminar_prestamo, name='eliminar_prestamo'),
 ]

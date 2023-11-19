@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Detalle del Prestamo</h1>
+  <p><strong>Cliente: </strong> {{ prestamo.cliente.nombre }}</p>
+  <p><strong>Libro: </strong> {{ prestamo.libro.titulo }}</p>
+  <p><strong>Fecha inicial: </strong> {{ prestamo.fecha_prestamo }}</p>
+  <p><strong>Fecha devolucion: </strong> {{ prestamo.fecha_devolucion }}</p>
+  <p><strong>Estado del libro: </strong> {{ prestamo.estado }}</p>
+  <p><strong>Estado devolucion: </strong> {{ prestamo.estado_devolucion_str }}</p>
+  <p><strong>Dias de multa: </strong> {{ prestamo.dias_multa }}</p>
+
+  <a href="{% url 'modificar_prestamo' prestamo.id %}">Editar</a>
+  <a href="{% url 'eliminar_prestamo' prestamo.id %}">Eliminar</a>
+  <a href="{% url 'listar_prestamos' %}">Volver al listado</a>
+{% endblock %}

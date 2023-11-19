@@ -1,7 +1,7 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-    <h1>Agregar Cliente</h1>
+    <h1>Modificar Prestamo</h1>
 
     <form method="post">
         {% csrf_token %}
@@ -10,5 +10,5 @@
         <input type="submit" value="Guardar">
     </form>
 
-    <a href="{% url 'listar_clientes' %}">Volver al listado</a>
+    <a href="{% url 'listar_prestamos' %}">Volver al listado</a>
 {% endblock %}
