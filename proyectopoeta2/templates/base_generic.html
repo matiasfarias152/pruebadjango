@@ -1,23 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Sitio{% endblock %}</title>
+
+    <!-- Enlaces a Materialize CSS y JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        nav {
+            background-color: #004d40;
+        }
+
+        nav a {
+            color: #fff !important;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #004d40;
+        }
+
+        .btn {
+            background-color: #004d40;
+        }
+
+        .btn:hover {
+            background-color: #00332b;
+        }
+
+        .red-text {
+            color: #ff5252;
+        }
+
+        /* Personalizar otros estilos según sea necesario */
+    </style>
 </head>
 <body>
 
 <nav>
-    <ul>
-        <li><a href="{% url 'listar_clientes' %}">Clientes</a></li>
-        <li><a href="{% url 'listar_libros' %}">Libros</a></li>
-        <li><a href="{% url 'listar_prestamos' %}">Préstamos</a></li>
-        <li><a href="{% url 'admin:index' %}">Admin</a></li>
-    </ul>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">The Big Poet</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'listar_clientes' %}">Clientes</a></li>
+            <li><a href="{% url 'listar_libros' %}">Libros</a></li>
+            <li><a href="{% url 'listar_prestamos' %}">Préstamos</a></li>
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        </ul>
+    </div>
 </nav>
 
-<div>
+<div class="container">
     {% block content %}{% endblock %}
 </div>
 

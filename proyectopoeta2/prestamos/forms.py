@@ -15,7 +15,7 @@ class PrestamoForm(forms.ModelForm):
             'fecha_prestamo': forms.DateInput(attrs={'type': 'date'}),
             'fecha_devolucion': forms.DateInput(attrs={'type': 'date'}),
             'estado': forms.Select(choices=ESTADO_CHOICES),
-            'dias_multa': forms.TextInput(attrs={'readonly': 'readonly'}),
+         
         }
 
     def clean(self):
