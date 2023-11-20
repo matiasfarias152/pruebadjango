@@ -2,12 +2,53 @@
 
 {% block content %}
     <h1>Modificar Prestamo</h1>
-
+    
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        
+        <div class="input-field">
+            {{ form.fecha_prestamo }}
+            <label for="{{ form.fecha_prestamo.id_for_label }}">Fecha de Préstamo</label>
+        </div>
+        
+        <div class="input-field">
+            {{ form.fecha_devolucion }}
+            <label for="{{ form.fecha_devolucion.id_for_label }}">Fecha de Devolución</label>
+        </div>
 
-        <input type="submit" value="Guardar">
+        <div class="input-field">
+            {{ form.estado }}
+            <label for="{{ form.estado.id_for_label }}">Estado</label>
+        </div>
+
+        <div class="input-field">
+            {{ form.multa }}
+            <label for="{{ form.multa.id_for_label }}">Multa</label>
+        </div>
+
+        <div class="input-field">
+            {{ form.libro }}
+            <label for="{{ form.libro.id_for_label }}">Libro</label>
+        </div>
+
+        <div class="input-field">
+            {{ form.cliente }}
+            <label for="{{ form.cliente.id_for_label }}">Cliente</label>
+        </div>
+
+        <p>
+            <label>
+                {{ form.estado_devolucion }}
+                <span>Estado de Devolución</span>
+            </label>
+        </p>
+
+        <div class="input-field">
+            {{ form.dias_multa }}
+            <label for="{{ form.dias_multa.id_for_label }}">Días de Multa</label>
+        </div>
+
+        <input class="btn" type="submit" value="Guardar">
     </form>
 
     <a href="{% url 'listar_prestamos' %}">Volver al listado</a>

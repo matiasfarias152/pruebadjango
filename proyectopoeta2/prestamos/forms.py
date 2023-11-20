@@ -15,6 +15,7 @@ class PrestamoForm(forms.ModelForm):
             'fecha_prestamo': forms.DateInput(attrs={'type': 'date'}),
             'fecha_devolucion': forms.DateInput(attrs={'type': 'date'}),
             'estado': forms.Select(choices=ESTADO_CHOICES),
+            'estado_devolucion': forms.CheckboxInput(),
          
         }
 
