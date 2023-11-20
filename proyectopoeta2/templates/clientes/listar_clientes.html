@@ -1,17 +1,25 @@
 {% extends 'base_generic.html' %}
 
+{% block title %}Listado de Clientes{% endblock %}
+
 {% block content %}
-    <h1>Listado de Clientes</h1>
-
-    <ul>
-        {% for cliente in clientes %}
-            <li>
-                <a href="{% url 'detalle_cliente' cliente.id %}">{{ cliente.nombre }}</a>
-                <a href="{% url 'modificar_cliente' cliente.id %}">(Editar)</a>
-                <a href="{% url 'eliminar_cliente' cliente.id %}">(Eliminar)</a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'agregar_cliente' %}">Agregar Cliente</a>
+  <h1>Listado de Clientes</h1>
+  <ul>
+    {% for cliente in clientes %}
+      <li class="cliente-item">
+        <div class="cliente-info">
+          <strong>Nombre:</strong> {{ cliente.nombre }}<br>
+          <strong>RUT:</strong> {{ cliente.rut }}<br>
+          <strong>Correo:</strong> {{ cliente.correo }}<br>
+          <strong>Multas:</strong> {{ cliente.multas }}
+        </div>
+        <div class="cliente-actions">
+          <a href="{% url 'detalle_cliente' cliente.id %}">(Detalles)</a>
+          <a href="{% url 'modificar_cliente' cliente.id %}">(Editar)</a>
+          <a href="{% url 'eliminar_cliente' cliente.id %}">(Eliminar)</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'agregar_cliente' %}">Agregar Cliente</a>
 {% endblock %}

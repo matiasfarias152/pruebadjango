@@ -12,7 +12,8 @@
           <strong>Libro:</strong> {{ prestamo.libro.titulo }}<br>
           <strong>Cliente:</strong> {{ prestamo.cliente.nombre }}<br>
           <strong>Fecha Préstamo:</strong> {{ prestamo.fecha_prestamo }}<br>
-          <strong>Fecha Devolución:</strong> {{ prestamo.fecha_devolucion }}
+          <strong>Fecha Devolución:</strong> {{ prestamo.fecha_devolucion }}<br>
+          <strong>Estado devolucion:</strong> {{ prestamo.estado_devolucion_str }}<br>
         </div>
         <div class="prestamo-actions">
           <a href="{% url 'detalle_prestamo' prestamo.id %}">(Detalles)</a>

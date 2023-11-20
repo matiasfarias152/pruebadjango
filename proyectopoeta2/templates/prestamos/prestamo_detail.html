@@ -9,6 +9,7 @@
   <p><strong>Estado del libro: </strong> {{ prestamo.estado }}</p>
   <p><strong>Estado devolucion: </strong> {{ prestamo.estado_devolucion_str }}</p>
   <p><strong>Dias de multa: </strong> {{ prestamo.dias_multa }}</p>
+  <p><strong>Valor multa por dia: </strong> {{ prestamo.multa }}</p>
 
   <a href="{% url 'modificar_prestamo' prestamo.id %}">Editar</a>
   <a href="{% url 'eliminar_prestamo' prestamo.id %}">Eliminar</a>

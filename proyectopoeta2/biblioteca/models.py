@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 class Libro(models.Model):
     DISPONIBILIDAD_CHOICES = [
@@ -14,6 +16,12 @@ class Libro(models.Model):
     disponibilidad = models.CharField(max_length=15, choices=DISPONIBILIDAD_CHOICES, default='disponible')
 
     def save(self, *args, **kwargs):
+        if self.cantidad_total < 0:
+            raise ValidationError("La cantidad total no puede ser negativa.")
+        
+        if self.fecha > timezone.now().date():
+            raise ValidationError("La fecha no puede ser en el futuro.")
+        
         if self.cantidad_total == 0:
             self.disponibilidad = 'no_disponible'
         else:

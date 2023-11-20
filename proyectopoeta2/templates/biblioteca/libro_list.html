@@ -1,15 +1,25 @@
 {% extends 'base_generic.html' %}
 
+{% block title %}Listado de Libros{% endblock %}
+
 {% block content %}
   <h1>Listado de Libros</h1>
   <ul>
     {% for libro in libros %}
-      <li>
-        <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }} - {{ libro.autor }} - {{ libro.fecha }} - {{ libro.disponibilidad }}</a>
-        <a href="{% url 'modificar_libro' libro.id %}">(Editar)</a>
-        <a href="{% url 'eliminar_libro' libro.id %}">(Eliminar)</a>
+      <li class="libro-item">
+        <div class="libro-info">
+          <strong>Título:</strong> {{ libro.titulo }}<br>
+          <strong>Autor:</strong> {{ libro.autor }}<br>
+          <strong>Fecha:</strong> {{ libro.fecha }}<br>
+          <strong>Disponibilidad:</strong> {{ libro.disponibilidad }}
+        </div>
+        <div class="libro-actions">
+          <a href="{% url 'detalle_libro' libro.id %}">(Detalles)</a>
+          <a href="{% url 'modificar_libro' libro.id %}">(Editar)</a>
+          <a href="{% url 'eliminar_libro' libro.id %}">(Eliminar)</a>
+        </div>
       </li>
     {% endfor %}
   </ul>
-  <a href="{% url 'agregar_libro' %}">Agregar libro</a>
+  <a href="{% url 'agregar_libro' %}">Agregar Libro</a>
 {% endblock %}
